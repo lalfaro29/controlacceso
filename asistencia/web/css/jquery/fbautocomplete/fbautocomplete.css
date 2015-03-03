@@ -1,0 +1,107 @@
+div.fbautocomplete-main-div {
+	width:600px; padding:3px 3px 0;
+	margin:0 auto;
+	border:1px solid #aaa; 
+	background-color:#fff; 
+	cursor:text;
+}
+ul.ui-autocomplete{
+	list-style:none;
+}
+ul.ui-autocomplete li{
+	list-style:none;
+}
+div.fbautocomplete-main-div input[type="text"] {
+	width:auto; 
+	margin:0 0 2px 0; 
+	padding:0 0 3px;
+	position:relative; 
+	top:0; 
+	float:left; 
+	border:none;
+	border-color: transparent; /* ie7 fix */
+	display:block;
+}
+
+div.fbautocomplete-main-div span {
+	display:block; 
+	/*border:1px solid #333; */
+	margin:0 3px 3px 0; 
+	padding:3px 20px 4px 8px;
+	position:relative; 
+	float:left; 
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px; border-radius:7px;
+	color:#333;
+	font:normal 11px Verdana, Sans-serif;
+	width:auto;
+	text-align:left;
+	/*background-color: #F3F7FD;
+	border: 1px solid #BBD8FB;
+	float: left;
+	margin: 1px 1px 0;
+	padding: 0.04em 0.3em 0.15em;
+	text-decoration: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: auto;*/
+}
+
+div.fbautocomplete-main-div span.valido{
+	background-color:#eee;
+	border: 1px solid #BBD8FB;
+}
+div.fbautocomplete-main-div span.error{
+	background-color: #FDF5F5;
+	border: 1px solid #B55E5E;
+}
+
+
+div.fbautocomplete-main-div span a {
+	/*position:absolute; */
+	right:2px;
+	/*
+	display:block;
+	float:right;
+	margin-left:8px; 
+	width:10px;
+	*/
+	margin: 0 0.2em 0 0;
+	top:2px; 
+	color:#666;
+	/*color: red;*/
+	font:bold 12px Verdana, Sans-serif; text-decoration:none;
+}
+div.fbautocomplete-main-div span a:hover { color:blue; }
+
+.ui-menu .ui-menu-item{
+	white-space:nowrap; padding:0 10px 0 0;
+	font-size:14px;
+}
+
+
+div.fbautocomplete-main-div span img{
+	cursor: pointer;
+	padding-left: 0.3em;
+	position: relative;
+	padding-top: 0.3em;
+	/*top: 0.4em;*/
+}
+
+
+div.fbautocomplete-main-div span input.text-fbautocomplete_des{
+	/*background-color: #F3F7FD;*/
+	background-color: transparent;
+	border-color: transparent;
+	cursor:default;
+	color: gray;
+}
+
+div.fbautocomplete-main-div span input.text-fbautocomplete_hab{
+	/*border-color: #F3F7FD;*/
+	background: inherit;
+	background-color:transparent;
+	color: black;
+}
+
+

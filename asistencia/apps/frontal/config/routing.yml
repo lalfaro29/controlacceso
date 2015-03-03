@@ -1,0 +1,203 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+registrar_adelanto:
+  url:     /principal/registrar_adelanto
+  param:   { module: principal, action: registrar_adelanto }
+
+registrar_retraso:
+  url:    /principal/registrar_retraso
+  param:  { module: principal, action: registrar_retraso }
+
+registrar_salida:
+  url:    /principal/registrar_salida
+  param:  { module: principal, action: registrar_salida }
+
+mensajes:
+  url:    /principal/mensajes
+  param:  { module: principal, action: mensajes }
+
+reporte: 
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: reporte ,action: index }
+  options:
+   model:                 movimiento
+  
+movimiento:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: permiso ,action: new }
+  options:
+   model:                 permiso
+   collection_actions: 
+     registro_manual:     [GET,POST]
+     lista:               [GET,POST]
+     listado:             [GET,POST]
+     validar_fecha:       [GET,POST]
+     guardar_movimiento:  [GET,POST]
+     eliminar_movimiento: [GET,POST]
+     reporte:             [GET,POST]
+     rpp_permisos:         [GET,POST]
+     rpp_especifico:      [GET,POST]
+#     rpp_estadistico:     [GET,POST]
+     rpp_he:              [GET,POST]
+     cargar_diagnostico:  [GET,POST]
+     select_departamento: [GET,POST]
+     asignar_turno:       [GET,POST]
+     guardar_turno:       [GET,POST]
+
+
+motivo:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: permiso ,action: new }
+  options:
+   model:                 permiso
+   collection_actions: 
+     guardar:            [GET,POST]
+     lista:              [GET,POST]
+
+permiso:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: permiso ,action: new }
+  options:
+   model:                 permiso
+   collection_actions: 
+     guardar:            [GET,POST]
+     lista:              [GET,POST]
+     asignar:            [GET,POST]
+     asignar_permiso:    [GET,POST] 
+     listado:            [GET,POST] 
+     guardar_permiso:    [GET,POST] 
+     eliminar_permiso:   [GET,POST] 
+ 
+feriado:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: feriado ,action: new }
+  options:
+   model:                 feriado
+   collection_actions: 
+     guardar:            [GET,POST]
+     lista:              [GET,POST]
+
+configuracion:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: configuracion ,action: new }
+  options:
+   model:                 configuracion
+   collection_actions: 
+     listado1:            [GET,POST]
+     listado2:            [GET,POST]
+     registrar:           [GET,POST]
+     eliminar:            [GET,POST]
+     lista_feriados:      [GET,POST]
+     guardar_feriado:     [GET,POST]
+     eliminar_feriado:    [GET,POST]
+     
+usuario:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: usuario ,action: new }
+  options:
+   model:                 usuario
+   collection_actions: 
+     guardar:            [GET,POST] 
+     eliminar:           [GET,POST] 
+     lista:              [GET,POST] 
+     usuario:            [GET,POST]
+     eliminar_usuario:   [GET,POST]
+     confirmar_clave:    [GET,POST]
+     registrar_usuario:  [GET,POST]
+     cambiar_clave:      [GET,POST]
+     listado:            [GET,POST] 
+     combo_usuario:      [GET,POST] 
+     buscar_vista:       [GET,POST] 
+     actualizar:         [GET,POST]
+     confirmar_nomina:   [GET,POST]
+     combo_usuario_tipo: [GET,POST]
+     deshabilitar:       [GET,POST]
+     habilitar:          [GET,POST]
+     
+proyecto:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: proyecto ,action: new }
+  options:
+   model:                 Proyecto
+   collection_actions: 
+     crear:              [GET,POST] 
+     lista:              [GET,POST] 
+     eliminar:           [GET,POST]
+
+tipo_empleado:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: tipo_empleado ,action: new }
+  options:
+   model:                 tipoempleado
+   collection_actions: 
+     crear:              [GET,POST]
+     lista:              [GET,POST] 
+     eliminar:           [GET,POST] 
+     
+cargo:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: cargo ,action: new }
+  options:
+   model:                 Cargo
+   collection_actions: 
+     crear:              [GET,POST]
+     lista:              [GET,POST] 
+     eliminar:           [GET,POST]
+     
+sede:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: sede ,action: new }
+  options:
+   model:                 Sede
+   collection_actions: 
+     crear:              [GET,POST]
+     lista:              [GET,POST] 
+     eliminar:           [GET,POST]
+     
+departamento:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: departamento ,action: new }
+  options:
+   model:                 Departamento
+   collection_actions: 
+     crear:              [GET,POST]
+     lista:              [GET,POST] 
+     eliminar:           [GET,POST]
+     
+coordinador:
+  class:                  sfDoctrineRouteCollection
+  param:                  { module: coordinador ,action: new }
+  options:
+   model:                 Coordinador
+   collection_actions: 
+     crear:              [GET,POST]
+     lista:              [GET,POST] 
+     eliminar:           [GET,POST]  
+     
+cerrar_sesion:
+  url:    /principal/cerrar_sesion
+  param:  { module: principal, action: cerrar_sesion }
+
+inicio_sesion:
+  url:    /principal/inicio_sesion
+  param:  { module: principal, action: inicio_sesion }
+  
+validar_sesion:
+  url:    /principal/validar_sesion
+  param:  { module: principal, action: validar_sesion }
+
+
+# default rules
+principal:
+  url:   /
+  param: { module: principal, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+#default_index:
+#  url:   /:module
+#  param: { action: index }
+
+#default:
+#  url:   /:module/:action/*

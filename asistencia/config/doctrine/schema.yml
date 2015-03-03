@@ -1,0 +1,816 @@
+Cargo:
+  connection: doctrine
+  tableName: asistencia.Cargo
+  package: asistencia.Entities
+  columns:
+    idcargo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    cargo:
+      type: string(70)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Configuracion:
+  connection: doctrine
+  tableName: asistencia.Configuracion
+  package: asistencia.Entities
+  columns:
+    idconfiguracion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    idusuario:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    horaentrada:
+      type: time(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    horasalida:
+      type: time(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    horamaxentrada:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    central:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    cestatique_x_jornada:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    precioticks:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    idsede:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    horadesdedi:
+      type: time(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    horahastadi:
+      type: time(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    horadesdeno:
+      type: time(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    horahastano:
+      type: time(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    porcentajedi:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    porcentajeno:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+  relations:
+    Usuario:                      { onDelete: CASCADE, local: idusuario , foreign: idusuario }
+    Sede:                         { onDelete: CASCADE, local: idsede , foreign: idsede }
+    RelacionConfigFeriado:
+      class:         Feriado
+      refClass:      RelacionConfigFeriado
+      local:         idconfiguracion
+      foreign:       idferiado
+      foreignAlias:  RelacionConfigFeriado
+    
+Coordinador:
+  connection: doctrine
+  tableName: asistencia.coordinador
+  package: asistencia.Entities
+  columns:
+    id_coordinador:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    usuario_id:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    departamento_id:
+      type: integer(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Usuario:                      { onDelete: CASCADE, local: usuario_id , foreign: idusuario }
+    Departamento:                 { onDelete: CASCADE, local:  departamento_id, foreign: iddepartamento }
+Departamento:
+  connection: doctrine
+  tableName: asistencia.Departamento
+  package: asistencia.Entities
+  columns:
+    iddepartamento:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    departamento:
+      type: string(60)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      
+Feriado:
+  connection: doctrine
+  tableName: asistencia.Feriado
+  package: asistencia.Entities
+  columns:
+    idferiado:                               { type: integer, primary: true, autoincrement: true }
+    feriado:                                 { type: string(200), notnull: true }
+    feriadofechdesde:                        { type: date, notnull: true }
+    feriadofechhasta:                        { type: date, notnull: false, default: null }
+    feriadohoradesde:                        { type: time, notnull: true }
+    feriadohorahasta:                        { type: time, notnull: true }
+    porcentajeferiado:                       { type: float, notnull: true }
+    porcentajenocturno:                      { type: float, notnull: true }
+    un_dia:                                  { type: boolean, notnull: true, default: true }
+    tomar_anio:                              { type: boolean, notnull: true, default: true }
+  relations:
+      RelacionConfigFeriado:                     { onDelete: CASCADE, local: idferiado , foreign: idferiado }
+
+JefeUnidad:
+  connection: doctrine
+  tableName: asistencia.jefe_unidad
+  package: asistencia.Entities
+  columns:
+    id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    usuario_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    departamento_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Usuario:                      { onDelete: CASCADE, local: usuario_id , foreign: idusuario }
+    Departamento:                 { onDelete: CASCADE, local: departamento_id , foreign: iddepartamento }
+    
+Movimiento:
+  connection: doctrine
+  tableName: asistencia.Movimiento
+  package: asistencia.Entities
+  columns:
+    idmovimiento:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    idusuario:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    movimiento:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    estado:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: PUNTUAL
+      notnull: true
+      autoincrement: false
+    registro:
+      type: string(15)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ipsede:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: ------
+      notnull: false
+      autoincrement: false
+    ipusuario:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: ------
+      notnull: false
+      autoincrement: false
+    idconfiguracion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    idmotivo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Usuario:                      { onDelete: CASCADE, local: idusuario, foreign: idusuario }
+    Configuracion:                { onDelete: CASCADE, local: idconfiguracion, foreign: idconfiguracion }
+    Motivo:                       { onDelete: CASCADE, local: idmotivo, foreign: idmotivo }
+Permiso:
+  connection: doctrine
+  tableName: asistencia.Permiso
+  package: asistencia.Entities
+  columns:
+    idpermiso:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    usuario_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fechadesde:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fechahasta:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    horas:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    tipopermiso:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: 'un dia'
+      notnull: true
+      autoincrement: false
+    idmotivo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    archivo:
+      type: string(100)
+      notnull: false
+    id_usuario_r:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Usuario:                      { onDelete: CASCADE, local: usuario_id, foreign: idusuario }
+    Motivo:                       { onDelete: CASCADE, local: idmotivo, foreign: idmotivo }
+    
+Proyecto:
+  connection: doctrine
+  tableName: asistencia.proyecto
+  package: asistencia.Entities
+  columns:
+    idproyecto:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    proyecto:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      
+RelacionConfigFeriado:
+  connection: doctrine
+  tableName: asistencia.RelacionConfigFeriado
+  package: asistencia.Entities
+  columns:
+    idconfiguracion:                      { type: integer, primary: true, unique: true }
+    idferiado:                            { type: integer, primary: true, unique: true } 
+  relations:
+    Configuracion:                       { onDelete: CASCADE, local: idconfiguracion, foreign: idconfiguracion }
+    Feriado:                             { onDelete: CASCADE, local: idferiado, foreign: idferiado } 
+
+
+Motivo:
+  connection: doctrine
+  tableName: asistencia.Motivo
+  package: asistencia.Entities
+  actAs:                         { Timestampable: ~ }
+  columns:
+    idmotivo:                      { type: integer, primary: true, autoincrement: true }
+    motivo:                        { type: string(100), notnull: true }
+    activo:                        { type: boolean, notnull: true, default: true }
+
+Sede:
+  connection: doctrine
+  tableName: asistencia.Sede
+  package: asistencia.Entities
+  columns:
+    idsede:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    sede:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    activa:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+TipoEmpleado:
+  connection: doctrine
+  tableName: asistencia.tipoEmpleado
+  package: asistencia.Entities
+  columns:
+    idtipoempleado:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    empleado:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+TipoUsuario:
+  connection: doctrine
+  tableName: asistencia.TipoUsuario
+  package: asistencia.Entities
+  columns:
+    idtipousuario:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    tipousuario:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Usuario:
+  connection: doctrine
+  tableName: asistencia.Usuario
+  package: asistencia.Entities
+  columns:
+    idusuario:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    apellido:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    cedula:
+      type: string(15)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    idtipoempleado:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    idcargo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    iddepartamento:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    idsede:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    estado:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    fechaingreso:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sueldo:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    idproyecto:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    idconfiguracion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ipusuario:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    activo:
+      type: string(1)
+      fixed: true
+      unsigned: false
+      primary: false
+      default: S
+      notnull: true
+      autoincrement: false
+    codigo_nomina:
+      type: integer(7)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    TipoEmpleado:                      { onDelete: CASCADE, local: idtipoempleado, foreign:idtipoempleado  }  
+    Cargo:                             { onDelete: CASCADE, local: idcargo, foreign: idcargo } 
+    Departamento:                      { onDelete: CASCADE, local: iddepartamento, foreign: iddepartamento }
+    Sede:                              { onDelete: CASCADE, local: idsede, foreign: idsede } 
+    Proyecto:                          { onDelete: CASCADE, local: idproyecto, foreign: idproyecto } 
+    Configuracion:                     { onDelete: CASCADE, local: idconfiguracion, foreign: idconfiguracion  } 
+UsuarioSistema:
+  connection: doctrine
+  tableName: asistencia.UsuarioSistema
+  package: asistencia.Entities
+  columns:
+    idusuariosistema:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    idtipousuario:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    idusuario:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    psw:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    TipoUsuario:       { onDelete: CASCADE, local: idtipousuario, foreign: idtipousuario } 
+    Usuario:           { onDelete: CASCADE, local:idusuario , foreign:idusuario  }
+VDatosPersonales:
+  connection: sigefirrhh
+  tableName: v_datos_personales
+  columns:
+    cedula:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+    primer_nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    segundo_nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    primer_apellido:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    segundo_apellido:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    descripcion_cargo:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    estatus:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    telefono_oficina:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    telefono_celular:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    telefono_residencia:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    email:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    codigo_nomina:
+      type: integer(7)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    dependencia:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    fecha_ingreso:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    periodicidad:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    unidad_administradora:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    fecha_nacimiento:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    sexo:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    estado_civil:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    id_personal:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    id_dependencia:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    id_unidad_funcional:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    nombre_uf:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    id_tipo_personal:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false

@@ -1,0 +1,29 @@
+
+a.player {
+display:block;
+width:500px;
+height:340px;
+text-align:center;
+color:#fff;
+text-decoration:none;
+cursor:pointer;
+background:#000 url(../../images/h500.png) repeat-x 0 0;
+background:-moz-linear-gradient(top, rgba(55, 102, 152, 0.9), rgba(6, 6, 6, 0.9));
+-moz-box-shadow:0 0 40px rgba(100, 118, 173, 0.5);
+}
+a.player:hover {
+background:-moz-linear-gradient(center top, rgba(73, 122, 173, 0.898), rgba(6, 6, 6, 0.898));
+}
+/* splash image */
+a.player img {
+margin-top:125px;
+border:0;
+}
+#info {
+width:410px;
+padding:8px;
+border:1px solid #ccc;
+background-color:#efefef;
+font:16px "bitstream vera sans", "verdana";
+margin-left:125px;
+} 

@@ -1,0 +1,36 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    #title:        symfony project
+    #description:  symfony project
+    #keywords:     symfony, project
+    #language:     en
+    #robots:       index, follow
+
+  stylesheets:    
+    -  main.css
+    -  inicial
+    -  tinybox
+    -  tablas
+    -  menu/menu.css
+    -  jquery/jquery.ptTimeSelect.css
+    -  time/main.css
+    -  time/ui.core.css
+    -  time/ui.theme.css
+    -  jquery/jquery-ui-1.8.18.custom.css
+  javascripts:    
+    -  jquery
+    -  jquery/tinybox
+    -  jquery/dataTables.js
+    -  menu/menu.js
+    -  jquery/jquery.ptTimeSelect.js
+    -  jquery/js/jquery-ui-1.8.18.custom.min.js
+#    -  dataTables.js
+
+  has_layout:     true
+  layout:         layout

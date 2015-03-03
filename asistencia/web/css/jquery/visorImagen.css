@@ -1,0 +1,21 @@
+#galeria img {
+	border: none;
+}
+
+#galeria_nav {
+	float: left;
+	width: 150px;
+	text-align: center;
+}
+
+#galeria_output {
+	float: left;
+	width: 600px;
+	height: 550px;
+	overflow: hidden;
+}
+
+#galeria_output img {
+	display: block;
+	margin: 20px auto 0 auto;
+}

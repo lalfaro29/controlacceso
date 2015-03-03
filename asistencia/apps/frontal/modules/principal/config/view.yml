@@ -1,0 +1,9 @@
+inicio_sesionSuccess:
+#  layout: modal_layout
+ has_layout: false 
+mensajesSuccess:
+  has_layout: false
+
+indexSuccess:
+  javascripts:    
+    -  jquery/jquery.textareaCounter.plugin.js

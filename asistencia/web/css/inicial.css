@@ -1,0 +1,26 @@
+
+table.inicial{
+	margin-top: 25%;
+	border: 1px solid #2E2EFE;
+}
+
+table.inicio_sesion{
+	border: 1px solid #2E2EFE;
+}
+
+.inicial caption,.inicio_sesion caption{
+	color:white;	
+	font-size: 20px;
+	text-align: center; 
+	background-color: #2E2EFE;
+}
+
+.inicial input[type="text"],.inicio_sesion input[type="text"],.inicio_sesion input[type="password"]{
+	font-size:1.2em;
+}
+
+.inicial tr,.inicio_sesion tr{
+	margin: 1em;
+}
+
+

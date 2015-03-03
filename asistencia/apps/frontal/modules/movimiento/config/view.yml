@@ -1,0 +1,13 @@
+especificoSuccess:
+  javascripts:    
+    -  jquery.multiselect2side.js
+    
+  stylesheets:
+    - jquery.multiselect2side.css
+    
+  permisosSuccess:
+  javascripts:    
+    -  jquery.multiselect2side.js
+    
+  stylesheets:
+    - jquery.multiselect2side.css  

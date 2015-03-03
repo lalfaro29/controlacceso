@@ -1,0 +1,78 @@
+TipoEmpleado:
+  Fijo:
+    empleado:                 EMPLEADO FIJO
+
+Cargo:
+  Analista:
+    cargo:                   PROFESIONAL III
+
+Departamento:
+  Informatica:
+    departamento:           SUSCERTE
+
+Sede:
+  Principal:
+    sede:                   EDIFICO BFC
+
+Proyecto:
+  no_aplica:
+    proyecto:               NO APLICA
+
+Usuario:
+  Inicial:
+    nombre:                 Administrador
+    apellido:               de Sistema
+    cedula:                 123
+    TipoEmpleado:           Fijo
+    Cargo:                  Analista
+    Departamento:           Informatica
+    Sede:                   Principal
+    fechaingreso:           '2010-06-29'
+    sueldo:                 1
+    Proyecto:               no_aplica
+    Configuracion:          configuracion_1
+
+Configuracion:
+  configuracion_1:
+    Usuario:               Inicial
+    fecha:                 '2011-12-08'
+    horaentrada:           08:00:00
+    horasalida:            16:00:00
+    horamaxentrada:        15
+    central:               true
+    cestatique_x_jornada:  1
+    precioticks:           13.75
+    Sede:                  Principal
+    horadesdedi:           17:00:00
+    horahastadi:           19:00:00
+    horadesdeno:           19:00:00
+    horahastano:           05:00:00
+    porcentajedi:          10
+    porcentajeno:          30
+      
+UsuarioSistema:
+  Administrador:
+    TipoUsuario:          root
+    Usuario:              Inicial
+    psw:                  mpf_2012
+
+TipoUsuario:
+  root:
+    tipousuario:         SUPER USUARIO
+
+Motivo:
+  sin_motivo:
+    motivo:               --- Sin motivo ---
+  Metro:
+    motivo:              Problemas en el metro
+  Cola:
+    motivo:              Colas
+  Personal_01:
+    motivo:              Problemas personales
+  medico:
+    motivo:              Urgencia medica
+  medico:
+    motivo:              Mal estar
+
+
+
